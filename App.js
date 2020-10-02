@@ -3,21 +3,22 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 
 export default function App() {
-  const [userName, onChangeName] = React.useState('Default');
+  const [text, onChangeText] = React.useState('');
 
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-        <Text>Please enter your name below!</Text>
+        <Text>Enter text below to expand!</Text>
         <TextInput
-          style={styles.inputName}
-          onChangeText={text => onChangeName(text)}
-          value={userName}
+          style={styles.inputText}
+          onChangeText={text => onChangeText(text)}
+          placeholder='Your Name'
+          value={text}
         />
         <StatusBar style="auto" />
       </View>
       <View style={styles.resultContainer}>
-        <Text style={styles.expandedName}>{userName}</Text>
+        <Text style={styles.expandedText}>{text}</Text>
       </View>
     </View>
   );
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inputName: {
+  inputText: {
     width: 120,
     marginTop: 10,
     padding: 5,
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     textAlign: 'center'
   },
-  expandedName: {
-    fontSize: 40
+  expandedText: {
+    fontSize: 50
   }
 });
