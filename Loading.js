@@ -1,10 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 
-export default function Loading() {
+export default function Loading({ navigation }) {
   return (
-    <View styles={styles.container}>
-      <Text>Loading...</Text>
+    <View style={styles.container}>
+      <Text style={styles.loadingText}>Loading...</Text>
+      <Button
+        title="Go to Text Expander"
+        onPress={() => navigation.navigate('Text Expander')}
+      />
     </View>
   );
 }
@@ -14,6 +18,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'purple'
+    backgroundColor: 'cornsilk'
+  },
+  loadingText: {
+    fontSize: 30,
+    marginBottom: 20
   }
 })
