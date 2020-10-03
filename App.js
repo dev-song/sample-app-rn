@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Loading from './Loading';
 
-export default function App() {
+function TextExpander() {
   const [text, onChangeText] = React.useState('');
 
   return (
@@ -24,6 +27,25 @@ export default function App() {
   );
 }
 
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* <Stack.Screen
+          name="Loading"
+          component={Loading}
+        /> */}
+        <Stack.Screen
+          name="Text Expander"
+          component={TextExpander}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -34,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    paddingTop: 40,
+    paddingVertical: 40,
     backgroundColor: 'salmon',
   },
   resultContainer: {
